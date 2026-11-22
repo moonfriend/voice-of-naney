@@ -82,16 +82,18 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[Locale('en'), Locale('fa')];
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('en'),
+    Locale('fa')
+  ];
 
   /// No description provided for @appTitle.
   ///
@@ -116,6 +118,234 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'فارسی'**
   String get languagePersian;
+
+  /// No description provided for @mapLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load the map. Please check your connection.'**
+  String get mapLoadError;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// No description provided for @filters.
+  ///
+  /// In en, this message translates to:
+  /// **'Filters'**
+  String get filters;
+
+  /// No description provided for @filtersWithCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Filters ({count})'**
+  String filtersWithCount(int count);
+
+  /// No description provided for @filterCultures.
+  ///
+  /// In en, this message translates to:
+  /// **'Cultures & ethnicities'**
+  String get filterCultures;
+
+  /// No description provided for @filterLanguages.
+  ///
+  /// In en, this message translates to:
+  /// **'Languages'**
+  String get filterLanguages;
+
+  /// No description provided for @filterKinds.
+  ///
+  /// In en, this message translates to:
+  /// **'Kinds'**
+  String get filterKinds;
+
+  /// No description provided for @filterTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Tag'**
+  String get filterTag;
+
+  /// No description provided for @filterClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear all'**
+  String get filterClear;
+
+  /// No description provided for @filterApply.
+  ///
+  /// In en, this message translates to:
+  /// **'Show results'**
+  String get filterApply;
+
+  /// No description provided for @kindLullaby.
+  ///
+  /// In en, this message translates to:
+  /// **'Lullaby'**
+  String get kindLullaby;
+
+  /// No description provided for @kindPoem.
+  ///
+  /// In en, this message translates to:
+  /// **'Poem'**
+  String get kindPoem;
+
+  /// No description provided for @kindWisdom.
+  ///
+  /// In en, this message translates to:
+  /// **'Words of wisdom'**
+  String get kindWisdom;
+
+  /// No description provided for @kindMurmur.
+  ///
+  /// In en, this message translates to:
+  /// **'Murmur'**
+  String get kindMurmur;
+
+  /// No description provided for @kindOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get kindOther;
+
+  /// No description provided for @recordingsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 recording} other{{count} recordings}}'**
+  String recordingsCount(int count);
+
+  /// No description provided for @placeRecordingsError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load the recordings.'**
+  String get placeRecordingsError;
+
+  /// No description provided for @noRecordingsHere.
+  ///
+  /// In en, this message translates to:
+  /// **'No recordings here match your filters.'**
+  String get noRecordingsHere;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// No description provided for @recordingNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'This recording does not exist or is no longer public.'**
+  String get recordingNotFound;
+
+  /// No description provided for @recordingLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load this recording.'**
+  String get recordingLoadError;
+
+  /// No description provided for @backToMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to the map'**
+  String get backToMap;
+
+  /// No description provided for @performedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Performed by {name}'**
+  String performedBy(String name);
+
+  /// No description provided for @recordedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Recorded in {year}'**
+  String recordedIn(int year);
+
+  /// No description provided for @origin.
+  ///
+  /// In en, this message translates to:
+  /// **'Origin'**
+  String get origin;
+
+  /// No description provided for @cultures.
+  ///
+  /// In en, this message translates to:
+  /// **'Cultures & ethnicities'**
+  String get cultures;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @originNote.
+  ///
+  /// In en, this message translates to:
+  /// **'About the origin'**
+  String get originNote;
+
+  /// No description provided for @tags.
+  ///
+  /// In en, this message translates to:
+  /// **'Tags'**
+  String get tags;
+
+  /// No description provided for @transcript.
+  ///
+  /// In en, this message translates to:
+  /// **'Lyrics & transcript'**
+  String get transcript;
+
+  /// No description provided for @versionOriginal.
+  ///
+  /// In en, this message translates to:
+  /// **'Original'**
+  String get versionOriginal;
+
+  /// No description provided for @versionRevision.
+  ///
+  /// In en, this message translates to:
+  /// **'Revision {number}'**
+  String versionRevision(int number);
+
+  /// No description provided for @versionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Version'**
+  String get versionLabel;
+
+  /// No description provided for @mapTilesMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Map background is not configured.'**
+  String get mapTilesMissing;
+
+  /// No description provided for @playerError.
+  ///
+  /// In en, this message translates to:
+  /// **'This media could not be played.'**
+  String get playerError;
+
+  /// No description provided for @play.
+  ///
+  /// In en, this message translates to:
+  /// **'Play'**
+  String get play;
+
+  /// No description provided for @pause.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get pause;
+
+  /// No description provided for @photoOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo for {title}'**
+  String photoOf(String title);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -134,18 +364,18 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en':
-      return AppLocalizationsEn();
-    case 'fa':
-      return AppLocalizationsFa();
+    case 'en': return AppLocalizationsEn();
+    case 'fa': return AppLocalizationsFa();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
+    'that was used.'
   );
 }

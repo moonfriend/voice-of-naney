@@ -6,9 +6,17 @@ import 'app_shell.dart';
 /// Route paths are part of the public contract: recordings are shared as `/r/<id>`.
 abstract final class AppRoutes {
   static const String home = '/';
+  static const String recording = '/r/:id';
+
+  static String recordingPath(String id) => '/r/$id';
 }
 
-GoRouter buildAppRouter({required WidgetBuilder homeBuilder}) {
+typedef RecordingPageBuilder = Widget Function(BuildContext context, String recordingId);
+
+GoRouter buildAppRouter({
+  required WidgetBuilder homeBuilder,
+  RecordingPageBuilder? recordingBuilder,
+}) {
   return GoRouter(
     initialLocation: AppRoutes.home,
     routes: <RouteBase>[
@@ -20,6 +28,13 @@ GoRouter buildAppRouter({required WidgetBuilder homeBuilder}) {
             path: AppRoutes.home,
             builder: (BuildContext context, GoRouterState state) => homeBuilder(context),
           ),
+          if (recordingBuilder != null)
+            GoRoute(
+              path: AppRoutes.recording,
+              builder:
+                  (BuildContext context, GoRouterState state) =>
+                      recordingBuilder(context, state.pathParameters['id'] ?? ''),
+            ),
         ],
       ),
     ],
