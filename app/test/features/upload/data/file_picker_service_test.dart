@@ -10,6 +10,8 @@ void main() {
     expect(mimeFor('clip.mp4', UploadRules.mediaMimeByExtension), 'video/mp4');
     expect(mimeFor('IMG_0042.MOV', UploadRules.mediaMimeByExtension), 'video/quicktime');
     expect(mimeFor('export.m4v', UploadRules.mediaMimeByExtension), 'video/x-m4v');
+    expect(mimeFor('PTT-20260101-WA0001.opus', UploadRules.mediaMimeByExtension), 'audio/ogg');
+    expect(mimeFor('voice.flac', UploadRules.mediaMimeByExtension), 'audio/flac');
     expect(mimeFor('notes.pdf', UploadRules.mediaMimeByExtension), isNull);
     expect(mimeFor('noextension', UploadRules.mediaMimeByExtension), isNull);
   });

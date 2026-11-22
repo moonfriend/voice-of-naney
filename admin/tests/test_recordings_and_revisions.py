@@ -73,6 +73,13 @@ class TestRevisions:
         assert [m.revision_no for m in repo.list_media(REC_ID)] == [0, 1]
         assert repo.list_media(REC_ID)[0].object_key == "media/original.mp3"
 
+    @pytest.mark.parametrize(
+        ("mime", "extension"), [("audio/flac", "flac"), ("audio/x-flac", "flac")]
+    )
+    def test_accepts_flac_audio(self, service: RevisionService, mime: str, extension: str) -> None:
+        revision = service.add_revision(REC_ID, b"a", mime, note=None)
+        assert revision.object_key.endswith(f".{extension}")
+
     def test_a_mov_revision_is_accepted_as_video(self, service: RevisionService) -> None:
         revision = service.add_revision(REC_ID, b"v", "video/quicktime", note=None)
         assert revision.media_type == MediaType.VIDEO

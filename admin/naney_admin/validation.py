@@ -58,6 +58,8 @@ MEDIA_RULES: dict[str, MediaRule] = {
     "audio/x-wav": MediaRule(MediaType.AUDIO, "wav", 50 * MB),
     "audio/ogg": MediaRule(MediaType.AUDIO, "ogg", 50 * MB),
     "audio/webm": MediaRule(MediaType.AUDIO, "webm", 50 * MB),
+    "audio/flac": MediaRule(MediaType.AUDIO, "flac", 50 * MB),
+    "audio/x-flac": MediaRule(MediaType.AUDIO, "flac", 50 * MB),
     "video/mp4": MediaRule(MediaType.VIDEO, "mp4", 500 * MB),
     "video/webm": MediaRule(MediaType.VIDEO, "webm", 500 * MB),
     "video/quicktime": MediaRule(MediaType.VIDEO, "mov", 500 * MB),

@@ -269,7 +269,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get mediaLimits =>
-      'Audio up to 50 MB (mp3, m4a, wav, ogg, webm). Video up to 500 MB (mp4, mov, m4v).';
+      'Audio up to 50 MB (mp3, m4a, aac, wav, ogg, opus, flac, webm). Video up to 500 MB (mp4, mov, m4v).';
 
   @override
   String get fieldTitle => 'Title';
