@@ -73,6 +73,11 @@ class TestRevisions:
         assert [m.revision_no for m in repo.list_media(REC_ID)] == [0, 1]
         assert repo.list_media(REC_ID)[0].object_key == "media/original.mp3"
 
+    def test_a_mov_revision_is_accepted_as_video(self, service: RevisionService) -> None:
+        revision = service.add_revision(REC_ID, b"v", "video/quicktime", note=None)
+        assert revision.media_type == MediaType.VIDEO
+        assert revision.object_key.endswith(".mov")
+
     def test_a_video_revision_is_typed_as_video(self, service: RevisionService) -> None:
         revision = service.add_revision(REC_ID, b"v", "video/mp4", note=None)
         assert revision.media_type == MediaType.VIDEO

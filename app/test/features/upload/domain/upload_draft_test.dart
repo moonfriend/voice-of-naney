@@ -65,6 +65,12 @@ void main() {
         ).issuesFor(UploadStep.media),
         isEmpty,
       );
+      expect(
+        UploadDraft(
+          media: source('video/quicktime', UploadRules.videoMaxBytes),
+        ).issuesFor(UploadStep.media),
+        isEmpty,
+      );
     });
 
     test('rejects other file types', () {

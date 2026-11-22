@@ -8,6 +8,8 @@ void main() {
   test('maps file extensions to accepted types', () {
     expect(mimeFor('Lay Lay.MP3', UploadRules.mediaMimeByExtension), 'audio/mpeg');
     expect(mimeFor('clip.mp4', UploadRules.mediaMimeByExtension), 'video/mp4');
+    expect(mimeFor('IMG_0042.MOV', UploadRules.mediaMimeByExtension), 'video/quicktime');
+    expect(mimeFor('export.m4v', UploadRules.mediaMimeByExtension), 'video/x-m4v');
     expect(mimeFor('notes.pdf', UploadRules.mediaMimeByExtension), isNull);
     expect(mimeFor('noextension', UploadRules.mediaMimeByExtension), isNull);
   });
