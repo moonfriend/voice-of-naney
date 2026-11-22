@@ -32,6 +32,12 @@ values (
   extensions.st_geogfromtext('POINT(46.29 38.08)')
 );
 
+-- Explicit ids above do not advance identity counters; move them past the fixture rows
+-- so inserts made by the code under test do not collide (matters on a fresh database).
+select setval(pg_get_serial_sequence('public.places', 'id'), (select max(id) from public.places));
+select setval(pg_get_serial_sequence('public.cultures', 'id'), (select max(id) from public.cultures));
+select setval(pg_get_serial_sequence('public.languages', 'id'), (select max(id) from public.languages));
+
 insert into public.uploads (id, object_key, owner, purpose, mime, declared_size, verified_at)
 values
   -- verified media + photo for uploader1
