@@ -446,3 +446,21 @@ grant execute on function public.place_areas(double precision, double precision,
 grant execute on function public.create_recording(jsonb) to authenticated;
 grant execute on function public.upsert_place(jsonb) to authenticated;
 grant execute on function public.is_active_uploader() to authenticated;
+
+-- ---------------------------------------------------------------- final privileges
+-- Recent Supabase versions no longer grant new objects to the API roles automatically, and
+-- older ones grant EXECUTE on functions to everyone. Make both explicit and closed by default.
+grant usage on schema public to service_role;
+grant all on all tables in schema public to service_role;
+grant usage, select on all sequences in schema public to service_role;
+grant execute on all functions in schema public to service_role;
+
+revoke execute on all functions in schema public from public, anon, authenticated;
+grant execute on function public.map_pins(double precision, double precision, double precision,
+  double precision, bigint[], bigint[], public.recording_kind[], text) to anon, authenticated;
+grant execute on function public.place_areas(double precision, double precision, double precision,
+  double precision) to anon, authenticated;
+grant execute on function public.place_area(bigint) to anon, authenticated;
+grant execute on function public.create_recording(jsonb) to authenticated;
+grant execute on function public.upsert_place(jsonb) to authenticated;
+grant execute on function public.is_active_uploader() to authenticated;
