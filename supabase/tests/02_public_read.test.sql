@@ -70,6 +70,13 @@ select isnt_empty(
   'place_areas returns outlines in the viewport'
 );
 
+select is(
+  (public.place_area(1) ->> 'type'),
+  'MultiPolygon',
+  'place_area returns the outline of a place with a visible recording'
+);
+select is(public.place_area(999), null, 'place_area is null for unknown places');
+
 -- The owner still sees their own hidden recording.
 select tests.act_as('00000000-0000-0000-0000-0000000000a1');
 select is((select count(*)::int from public.recordings), 2, 'the owner sees their own hidden recording');

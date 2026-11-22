@@ -429,6 +429,16 @@ language sql stable security invoker set search_path = '' as $$
     and exists (select 1 from public.recordings r where r.place_id = pl.id and r.status = 'published');
 $$;
 
+-- Outline of one place (for the recording page mini-map); only places with a visible recording.
+create function public.place_area(p_place_id bigint) returns jsonb
+language sql stable security invoker set search_path = '' as $$
+  select extensions.st_asgeojson(pl.area, 5)::jsonb
+  from public.places pl
+  where pl.id = p_place_id
+    and exists (select 1 from public.recordings r where r.place_id = pl.id);
+$$;
+
+grant execute on function public.place_area(bigint) to anon, authenticated;
 grant execute on function public.map_pins(double precision, double precision, double precision,
   double precision, bigint[], bigint[], public.recording_kind[], text) to anon, authenticated;
 grant execute on function public.place_areas(double precision, double precision, double precision,
