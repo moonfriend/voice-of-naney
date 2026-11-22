@@ -45,9 +45,29 @@ function buildDeps(env: WorkerEnv): Deps {
     },
     signer: new R2UrlSigner(config.r2),
     bucket: env.MEDIA,
+    geoFetch: cachedFetch,
     allowedOrigins: config.allowedOrigins,
     maxUploadsPerDay: config.maxUploadsPerDay,
     now: () => new Date(),
     newId: () => crypto.randomUUID(),
   };
+}
+
+const GEO_CACHE_SECONDS = 7 * 24 * 60 * 60;
+
+/** Place names and boundaries rarely change; caching keeps us well inside Nominatim's policy. */
+async function cachedFetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
+  const request = new Request(input, init);
+  const cache = caches.default;
+  const cached = await cache.match(request);
+  if (cached) {
+    return cached;
+  }
+  const response = await fetch(request);
+  if (response.ok) {
+    const cacheable = new Response(response.clone().body, response);
+    cacheable.headers.set('cache-control', `public, max-age=${GEO_CACHE_SECONDS}`);
+    await cache.put(request, cacheable);
+  }
+  return response;
 }

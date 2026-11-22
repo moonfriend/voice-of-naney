@@ -50,6 +50,8 @@ export interface Deps {
   uploads: Uploads;
   signer: UrlSigner;
   bucket: R2Bucket;
+  /** Outbound fetch for Photon/Nominatim; cached in production (see index.ts). */
+  geoFetch: typeof fetch;
   allowedOrigins: readonly string[];
   maxUploadsPerDay: number;
   now: () => Date;
