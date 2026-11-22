@@ -42,6 +42,7 @@ Restrict the key to your domain in MapTiler's settings, because it is visible in
 ./scripts/setup-r2.sh               # bucket + CORS for direct uploads
 ./scripts/push-worker-secrets.sh    # the only step that sends secrets anywhere (to Cloudflare)
 ./scripts/deploy.sh                 # builds the web app and deploys the Worker
+uv run --project admin python scripts/smoke_upload.py   # live end-to-end check, cleans up after itself
 ```
 
 Then invite yourself from the admin panel (`cd admin && uv run streamlit run app.py`) and make
