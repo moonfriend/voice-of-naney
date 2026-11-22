@@ -162,7 +162,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get signInTitle => 'برای هم‌رسانی ضبط‌ها وارد شوید';
 
   @override
-  String get signInHint => 'حساب‌ها فقط با دعوت‌نامه ساخته می‌شوند. برای شنیدن ضبط‌ها نیازی به حساب نیست.';
+  String get signInHint =>
+      'حساب‌ها فقط با دعوت‌نامه ساخته می‌شوند. برای شنیدن ضبط‌ها نیازی به حساب نیست.';
 
   @override
   String get email => 'ایمیل';
@@ -183,7 +184,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get setPasswordTitle => 'گذرواژه‌ی خود را انتخاب کنید';
 
   @override
-  String get setPasswordHint => 'خوش آمدید! برای کامل کردن حساب، گذرواژه‌ای (دست‌کم ۸ نویسه) انتخاب کنید.';
+  String get setPasswordHint =>
+      'خوش آمدید! برای کامل کردن حساب، گذرواژه‌ای (دست‌کم ۸ نویسه) انتخاب کنید.';
 
   @override
   String get newPassword => 'گذرواژه‌ی تازه';
@@ -248,7 +250,8 @@ class AppLocalizationsFa extends AppLocalizations {
   }
 
   @override
-  String get micPermissionDenied => 'دسترسی به میکروفون رد شد. آن را در تنظیمات مرورگر مجاز کنید یا فایلی انتخاب کنید.';
+  String get micPermissionDenied =>
+      'دسترسی به میکروفون رد شد. آن را در تنظیمات مرورگر مجاز کنید یا فایلی انتخاب کنید.';
 
   @override
   String get recordingFailed => 'ضبط انجام نشد. لطفاً دوباره تلاش کنید یا فایلی انتخاب کنید.';
@@ -265,7 +268,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get addPhoto => 'افزودن عکس (اختیاری)';
 
   @override
-  String get mediaLimits => 'صدا تا ۵۰ مگابایت (mp3، m4a، wav، ogg، webm). ویدیو تا ۵۰۰ مگابایت (mp4).';
+  String get mediaLimits =>
+      'صدا تا ۵۰ مگابایت (mp3، m4a، wav، ogg، webm). ویدیو تا ۵۰۰ مگابایت (mp4، mov، m4v).';
 
   @override
   String get fieldTitle => 'عنوان';
@@ -301,7 +305,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get fieldTranscript => 'متن، رونوشت یا ترجمه (اختیاری)';
 
   @override
-  String get culturesIntro => 'این ضبط از کدام فرهنگ یا قوم است؟ برای خانواده‌های آمیخته یا کوچ‌کرده، فرهنگ دوم یا سوم را هم بیفزایید.';
+  String get culturesIntro =>
+      'این ضبط از کدام فرهنگ یا قوم است؟ برای خانواده‌های آمیخته یا کوچ‌کرده، فرهنگ دوم یا سوم را هم بیفزایید.';
 
   @override
   String cultureLabel(int number) {
@@ -327,7 +332,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get fieldOriginNoteHint => 'مثلاً خانواده در دهه‌ی ۱۳۳۰ از ارومیه به تبریز کوچ کرد';
 
   @override
-  String get areaIntro => 'این ضبط از کجاست؟ شهر، محله یا روستا را جست‌وجو کنید یا خودتان محدوده را بکشید.';
+  String get areaIntro =>
+      'این ضبط از کجاست؟ شهر، محله یا روستا را جست‌وجو کنید یا خودتان محدوده را بکشید.';
 
   @override
   String get searchPlace => 'جست‌وجوی مکان';
@@ -342,7 +348,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get loadingBoundary => 'در حال بارگیری محدوده…';
 
   @override
-  String get noBoundary => 'اوپن‌استریت‌مپ برای این مکان محدوده‌ای ندارد. لطفاً محدوده را روی نقشه بکشید.';
+  String get noBoundary =>
+      'اوپن‌استریت‌مپ برای این مکان محدوده‌ای ندارد. لطفاً محدوده را روی نقشه بکشید.';
 
   @override
   String get boundaryFailed => 'بارگیری محدوده ممکن نشد. دوباره تلاش کنید یا محدوده را بکشید.';
@@ -385,7 +392,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get consentTitle => 'اجازه‌ی هم‌رسانی';
 
   @override
-  String get consentText => 'تأیید می‌کنم که فردی که در این ضبط شنیده یا دیده می‌شود (یا خانواده‌اش) با هم‌رسانی عمومی آن در «صدای ننه» موافق است و من اجازه‌ی بارگذاری آن را دارم.';
+  String get consentText =>
+      'تأیید می‌کنم که فردی که در این ضبط شنیده یا دیده می‌شود (یا خانواده‌اش) با هم‌رسانی عمومی آن در «صدای ننه» موافق است و من اجازه‌ی بارگذاری آن را دارم.';
 
   @override
   String get submit => 'هم‌رسانی ضبط';
@@ -405,7 +413,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get savingRecording => 'در حال ذخیره…';
 
   @override
-  String get submitFailed => 'هم‌رسانی کامل نشد. فایل‌های شما نگه داشته شده‌اند؛ برای تلاش دوباره دکمه را بزنید.';
+  String get submitFailed =>
+      'هم‌رسانی کامل نشد. فایل‌های شما نگه داشته شده‌اند؛ برای تلاش دوباره دکمه را بزنید.';
 
   @override
   String get dailyLimitReached => 'به سقف بارگذاری امروز رسیده‌اید. لطفاً فردا دوباره تلاش کنید.';
@@ -459,5 +468,6 @@ class AppLocalizationsFa extends AppLocalizations {
   String get issueConsentMissing => 'لطفاً اجازه‌ی هم‌رسانی را تأیید کنید.';
 
   @override
-  String get fileMustBeChosenAgain => 'پیش از تلاش دوباره باید این فایل بزرگ را دوباره انتخاب کنید. به گام نخست برگردید و آن را دوباره انتخاب کنید.';
+  String get fileMustBeChosenAgain =>
+      'پیش از تلاش دوباره باید این فایل بزرگ را دوباره انتخاب کنید. به گام نخست برگردید و آن را دوباره انتخاب کنید.';
 }

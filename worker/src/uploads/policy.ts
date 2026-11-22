@@ -40,6 +40,9 @@ const ALLOWED: Record<UploadPurpose, Record<string, MimeRule>> = {
     'audio/webm': { extension: 'webm', maxBytes: AUDIO_MAX },
     'video/mp4': { extension: 'mp4', maxBytes: VIDEO_MAX },
     'video/webm': { extension: 'webm', maxBytes: VIDEO_MAX },
+    // iPhone camera videos; most use H.264 and play in current browsers.
+    'video/quicktime': { extension: 'mov', maxBytes: VIDEO_MAX },
+    'video/x-m4v': { extension: 'm4v', maxBytes: VIDEO_MAX },
   },
   photo: {
     'image/jpeg': { extension: 'jpg', maxBytes: PHOTO_MAX },

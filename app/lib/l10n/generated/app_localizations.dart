@@ -82,18 +82,16 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[
-    Locale('en'),
-    Locale('fa')
-  ];
+  static const List<Locale> supportedLocales = <Locale>[Locale('en'), Locale('fa')];
 
   /// No description provided for @appTitle.
   ///
@@ -566,7 +564,7 @@ abstract class AppLocalizations {
   /// No description provided for @mediaLimits.
   ///
   /// In en, this message translates to:
-  /// **'Audio up to 50 MB (mp3, m4a, wav, ogg, webm). Video up to 500 MB (mp4).'**
+  /// **'Audio up to 50 MB (mp3, m4a, wav, ogg, webm). Video up to 500 MB (mp4, mov, m4v).'**
   String get mediaLimits;
 
   /// No description provided for @fieldTitle.
@@ -958,18 +956,18 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en': return AppLocalizationsEn();
-    case 'fa': return AppLocalizationsFa();
+    case 'en':
+      return AppLocalizationsEn();
+    case 'fa':
+      return AppLocalizationsFa();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
+    'that was used.',
   );
 }

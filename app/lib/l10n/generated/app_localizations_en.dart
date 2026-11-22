@@ -162,7 +162,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signInTitle => 'Sign in to share recordings';
 
   @override
-  String get signInHint => 'Accounts are by invitation only. Listening to recordings needs no account.';
+  String get signInHint =>
+      'Accounts are by invitation only. Listening to recordings needs no account.';
 
   @override
   String get email => 'Email';
@@ -183,7 +184,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get setPasswordTitle => 'Choose your password';
 
   @override
-  String get setPasswordHint => 'Welcome! Choose a password (at least 8 characters) to finish setting up your account.';
+  String get setPasswordHint =>
+      'Welcome! Choose a password (at least 8 characters) to finish setting up your account.';
 
   @override
   String get newPassword => 'New password';
@@ -248,7 +250,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get micPermissionDenied => 'Microphone access was denied. Allow it in your browser settings, or choose a file instead.';
+  String get micPermissionDenied =>
+      'Microphone access was denied. Allow it in your browser settings, or choose a file instead.';
 
   @override
   String get recordingFailed => 'Recording did not work. Please try again or choose a file.';
@@ -265,7 +268,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addPhoto => 'Add a photo (optional)';
 
   @override
-  String get mediaLimits => 'Audio up to 50 MB (mp3, m4a, wav, ogg, webm). Video up to 500 MB (mp4).';
+  String get mediaLimits =>
+      'Audio up to 50 MB (mp3, m4a, wav, ogg, webm). Video up to 500 MB (mp4, mov, m4v).';
 
   @override
   String get fieldTitle => 'Title';
@@ -301,7 +305,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fieldTranscript => 'Lyrics, transcript or translation (optional)';
 
   @override
-  String get culturesIntro => 'Which culture or ethnic group does this come from? Add a second or third for mixed or moved families.';
+  String get culturesIntro =>
+      'Which culture or ethnic group does this come from? Add a second or third for mixed or moved families.';
 
   @override
   String cultureLabel(int number) {
@@ -327,7 +332,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fieldOriginNoteHint => 'e.g. family moved from Urmia to Tabriz in the 1950s';
 
   @override
-  String get areaIntro => 'Where does this recording come from? Search for a city, district or village, or draw the area yourself.';
+  String get areaIntro =>
+      'Where does this recording come from? Search for a city, district or village, or draw the area yourself.';
 
   @override
   String get searchPlace => 'Search a place';
@@ -342,7 +348,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loadingBoundary => 'Loading the area…';
 
   @override
-  String get noBoundary => 'OpenStreetMap has no outline for this place. Please draw the area on the map.';
+  String get noBoundary =>
+      'OpenStreetMap has no outline for this place. Please draw the area on the map.';
 
   @override
   String get boundaryFailed => 'Could not load the outline. Try again or draw the area.';
@@ -385,7 +392,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get consentTitle => 'Permission to share';
 
   @override
-  String get consentText => 'I confirm that the person heard or seen in this recording (or their family) agreed to share it publicly on Voice of Naney, and that I may upload it.';
+  String get consentText =>
+      'I confirm that the person heard or seen in this recording (or their family) agreed to share it publicly on Voice of Naney, and that I may upload it.';
 
   @override
   String get submit => 'Share recording';
@@ -405,7 +413,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get savingRecording => 'Saving…';
 
   @override
-  String get submitFailed => 'Sharing did not finish. Your files are kept — press the button to try again.';
+  String get submitFailed =>
+      'Sharing did not finish. Your files are kept — press the button to try again.';
 
   @override
   String get dailyLimitReached => 'You reached today\'s upload limit. Please try again tomorrow.';
@@ -459,5 +468,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get issueConsentMissing => 'Please confirm permission to share.';
 
   @override
-  String get fileMustBeChosenAgain => 'This large file has to be chosen again before retrying. Go back to the first step and choose it again.';
+  String get fileMustBeChosenAgain =>
+      'This large file has to be chosen again before retrying. Go back to the first step and choose it again.';
 }

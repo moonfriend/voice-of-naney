@@ -46,6 +46,8 @@ describe('parseUploadRequest', () => {
     ['audio/webm', 'webm'],
     ['video/mp4', 'mp4'],
     ['video/webm', 'webm'],
+    ['video/quicktime', 'mov'],
+    ['video/x-m4v', 'm4v'],
   ])('accepts %s for media', (mime, extension) => {
     expect(parseUploadRequest({ purpose: 'media', mime, size: 10 }).extension).toBe(extension);
   });
@@ -76,6 +78,16 @@ describe('parseUploadRequest', () => {
       50 * MB,
     );
     expectBadRequest({ purpose: 'media', mime: 'audio/mpeg', size: 50 * MB + 1 }, 'too_large');
+  });
+
+  it('applies the video limit to .mov files (iPhone recordings)', () => {
+    expect(
+      parseUploadRequest({ purpose: 'media', mime: 'video/quicktime', size: 500 * MB }).size,
+    ).toBe(500 * MB);
+    expectBadRequest(
+      { purpose: 'media', mime: 'video/quicktime', size: 500 * MB + 1 },
+      'too_large',
+    );
   });
 
   it('allows video up to 500 MB and rejects more', () => {
