@@ -70,7 +70,8 @@ st.dataframe(
 with st.form("revision", clear_on_submit=True):
     st.subheader("Add a revision")
     upload = st.file_uploader(
-        "Audio or video file", type=["mp3", "m4a", "aac", "wav", "ogg", "webm", "mp4", "mov", "m4v"]
+        "Audio or video file",
+        type=["mp3", "m4a", "aac", "wav", "ogg", "opus", "flac", "webm", "mp4", "mov", "m4v"],
     )
     note = st.text_input("What changed? (e.g. noise removed)")
     if st.form_submit_button("Upload revision") and upload is not None:

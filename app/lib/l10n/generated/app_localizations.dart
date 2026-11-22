@@ -564,7 +564,7 @@ abstract class AppLocalizations {
   /// No description provided for @mediaLimits.
   ///
   /// In en, this message translates to:
-  /// **'Audio up to 50 MB (mp3, m4a, wav, ogg, webm). Video up to 500 MB (mp4, mov, m4v).'**
+  /// **'Audio up to 50 MB (mp3, m4a, aac, wav, ogg, opus, flac, webm). Video up to 500 MB (mp4, mov, m4v).'**
   String get mediaLimits;
 
   /// No description provided for @fieldTitle.

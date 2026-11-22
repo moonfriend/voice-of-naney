@@ -269,7 +269,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get mediaLimits =>
-      'صدا تا ۵۰ مگابایت (mp3، m4a، wav، ogg، webm). ویدیو تا ۵۰۰ مگابایت (mp4، mov، m4v).';
+      'صدا تا ۵۰ مگابایت (mp3، m4a، aac، wav، ogg، opus، flac، webm). ویدیو تا ۵۰۰ مگابایت (mp4، mov، m4v).';
 
   @override
   String get fieldTitle => 'عنوان';

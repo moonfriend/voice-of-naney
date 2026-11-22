@@ -78,7 +78,7 @@
   "selectedFile": "{name} · {size}",
   "removeFile": "حذف",
   "addPhoto": "افزودن عکس (اختیاری)",
-  "mediaLimits": "صدا تا ۵۰ مگابایت (mp3، m4a، wav، ogg، webm). ویدیو تا ۵۰۰ مگابایت (mp4، mov، m4v).",
+  "mediaLimits": "صدا تا ۵۰ مگابایت (mp3، m4a، aac، wav، ogg، opus، flac، webm). ویدیو تا ۵۰۰ مگابایت (mp4، mov، m4v).",
   "fieldTitle": "عنوان",
   "fieldKind": "گونه",
   "fieldDescription": "توضیحات (اختیاری)",

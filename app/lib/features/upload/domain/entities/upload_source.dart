@@ -62,6 +62,9 @@ abstract final class UploadRules {
     'wav': 'audio/wav',
     'ogg': 'audio/ogg',
     'oga': 'audio/ogg',
+    // WhatsApp/Telegram voice notes (Opus in an Ogg container).
+    'opus': 'audio/ogg',
+    'flac': 'audio/flac',
     'webm': 'audio/webm',
     'mp4': 'video/mp4',
     'mov': 'video/quicktime',

@@ -44,6 +44,8 @@ describe('parseUploadRequest', () => {
     ['audio/x-wav', 'wav'],
     ['audio/ogg', 'ogg'],
     ['audio/webm', 'webm'],
+    ['audio/flac', 'flac'],
+    ['audio/x-flac', 'flac'],
     ['video/mp4', 'mp4'],
     ['video/webm', 'webm'],
     ['video/quicktime', 'mov'],
