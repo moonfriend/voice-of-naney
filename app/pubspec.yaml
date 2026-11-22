@@ -30,4 +30,5 @@ dev_dependencies:
   injectable_generator: ^2.8.1
 
 flutter:
+  generate: true
   uses-material-design: true
