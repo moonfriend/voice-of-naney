@@ -126,6 +126,9 @@ class SupabaseRepository:
             raise RuntimeError("Supabase did not return the invited user.")
         return str(response.user.id)
 
+    def set_password(self, user_id: str, password: str) -> None:
+        self._client.auth.admin.update_user_by_id(user_id, {"password": password})
+
     def update_profile(
         self,
         user_id: str,

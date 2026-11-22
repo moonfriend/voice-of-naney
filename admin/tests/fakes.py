@@ -55,6 +55,7 @@ class FakeUserRepo:
     def __init__(self) -> None:
         self.users: dict[str, Uploader] = {}
         self.invited: list[str] = []
+        self.passwords: dict[str, str] = {}
 
     def list_uploaders(self) -> list[Uploader]:
         return sorted(self.users.values(), key=lambda user: user.email)
@@ -72,6 +73,11 @@ class FakeUserRepo:
             last_sign_in_at=None,
         )
         return user_id
+
+    def set_password(self, user_id: str, password: str) -> None:
+        if user_id not in self.users:
+            raise KeyError(user_id)
+        self.passwords[user_id] = password
 
     def update_profile(
         self,
