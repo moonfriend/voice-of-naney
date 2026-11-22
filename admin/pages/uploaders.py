@@ -58,3 +58,14 @@ if selected is not None:
                 service.set_disabled(selected.id, disabled=disabled)
 
             run_action(save, "Saved.")
+
+    with st.form("password", clear_on_submit=True):
+        st.subheader(f"Change password for {selected.email}")
+        st.caption("For people who forgot theirs. They can sign in with it right away.")
+        new_password = st.text_input("New password", type="password")
+        repeated = st.text_input("Repeat new password", type="password")
+        if st.form_submit_button("Change password"):
+            run_action(
+                lambda: service.set_password(selected.id, new_password, repeated),
+                "Password changed. Share it with them privately, not by email or chat.",
+            )

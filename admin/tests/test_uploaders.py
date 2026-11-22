@@ -71,3 +71,34 @@ def test_refuses_to_remove_the_last_active_admin(service: UploaderService) -> No
 def test_requires_a_redirect_url() -> None:
     with pytest.raises(ValueError, match="redirect"):
         UploaderService(FakeUserRepo(), invite_redirect_url="")
+
+
+def test_sets_a_new_password(service: UploaderService, repo: FakeUserRepo) -> None:
+    user_id = service.invite("friend@example.com", display_name=None, role=UserRole.UPLOADER)
+    service.set_password(user_id, "correct horse", "correct horse")
+    assert repo.passwords[user_id] == "correct horse"
+
+
+@pytest.mark.parametrize(
+    ("password", "confirmation", "message"),
+    [
+        ("short", "short", "at least 8"),
+        ("x" * 73, "x" * 73, "at most 72"),
+        ("correct horse", "correct hose", "do not match"),
+        ("        ", "        ", "at least 8"),
+    ],
+)
+def test_rejects_bad_passwords(
+    service: UploaderService, repo: FakeUserRepo, password: str, confirmation: str, message: str
+) -> None:
+    user_id = service.invite("friend@example.com", display_name=None, role=UserRole.UPLOADER)
+    with pytest.raises(ValidationError, match=message):
+        service.set_password(user_id, password, confirmation)
+    assert repo.passwords == {}
+
+
+def test_password_errors_never_contain_the_password(service: UploaderService) -> None:
+    user_id = service.invite("friend@example.com", display_name=None, role=UserRole.UPLOADER)
+    with pytest.raises(ValidationError) as error:
+        service.set_password(user_id, "secret-but-short"[:7], "secret-but-short"[:7])
+    assert "secret-" not in str(error.value)

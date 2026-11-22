@@ -108,3 +108,19 @@ def test_app_without_secrets_shows_a_configuration_error() -> None:
     app = AppTest.from_file(str(PAGES.parent / "app.py")).run()
     assert not app.exception
     assert "not configured" in app.error[0].value
+
+
+def test_changing_a_password(world: World) -> None:
+    user_id = world.users.invite("friend@example.com", "https://naney.test/set-password")
+    app = run_page(world, "uploaders")
+    new_password = next(field for field in app.text_input if field.label == "New password")
+    confirm = next(field for field in app.text_input if field.label == "Repeat new password")
+    new_password.input("correct horse")
+    confirm.input("correct horse")
+    next(button for button in app.button if button.label == "Change password").click().run()
+    assert not app.exception
+    assert world.users.passwords[user_id] == "correct horse"
+    assert (
+        app.success[-1].value
+        == "Password changed. Share it with them privately, not by email or chat."
+    )

@@ -37,6 +37,8 @@ class UserRepo(Protocol):
 
     def invite(self, email: str, redirect_to: str) -> str: ...
 
+    def set_password(self, user_id: str, password: str) -> None: ...
+
     def update_profile(
         self,
         user_id: str,
