@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../config/app_config.dart';
+import '../media/media_url_builder.dart';
 
 /// Third-party objects the app depends on, created once at startup.
 @module
@@ -13,6 +14,9 @@ abstract class AppModule {
   /// Supabase must be initialised in `main` before the container is built.
   @singleton
   SupabaseClient get supabaseClient => Supabase.instance.client;
+
+  @singleton
+  MediaUrlBuilder mediaUrlBuilder(AppConfig config) => MediaUrlBuilder(config.apiBaseUrl);
 
   @singleton
   Dio apiDio(AppConfig config) => Dio(

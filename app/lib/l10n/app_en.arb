@@ -3,5 +3,85 @@
   "appTitle": "Voice of Naney",
   "languageMenuTooltip": "Language",
   "languageEnglish": "English",
-  "languagePersian": "فارسی"
+  "languagePersian": "فارسی",
+  "mapLoadError": "Could not load the map. Please check your connection.",
+  "retry": "Retry",
+  "filters": "Filters",
+  "filtersWithCount": "Filters ({count})",
+  "@filtersWithCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filterCultures": "Cultures & ethnicities",
+  "filterLanguages": "Languages",
+  "filterKinds": "Kinds",
+  "filterTag": "Tag",
+  "filterClear": "Clear all",
+  "filterApply": "Show results",
+  "kindLullaby": "Lullaby",
+  "kindPoem": "Poem",
+  "kindWisdom": "Words of wisdom",
+  "kindMurmur": "Murmur",
+  "kindOther": "Other",
+  "recordingsCount": "{count, plural, =1{1 recording} other{{count} recordings}}",
+  "@recordingsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "placeRecordingsError": "Could not load the recordings.",
+  "noRecordingsHere": "No recordings here match your filters.",
+  "close": "Close",
+  "recordingNotFound": "This recording does not exist or is no longer public.",
+  "recordingLoadError": "Could not load this recording.",
+  "backToMap": "Back to the map",
+  "performedBy": "Performed by {name}",
+  "@performedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "recordedIn": "Recorded in {year}",
+  "@recordedIn": {
+    "placeholders": {
+      "year": {
+        "type": "int"
+      }
+    }
+  },
+  "origin": "Origin",
+  "cultures": "Cultures & ethnicities",
+  "language": "Language",
+  "originNote": "About the origin",
+  "tags": "Tags",
+  "transcript": "Lyrics & transcript",
+  "versionOriginal": "Original",
+  "versionRevision": "Revision {number}",
+  "@versionRevision": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "versionLabel": "Version",
+  "mapTilesMissing": "Map background is not configured.",
+  "playerError": "This media could not be played.",
+  "play": "Play",
+  "pause": "Pause",
+  "photoOf": "Photo for {title}",
+  "@photoOf": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  }
 }
