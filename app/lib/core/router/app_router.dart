@@ -16,13 +16,20 @@ typedef RecordingPageBuilder = Widget Function(BuildContext context, String reco
 GoRouter buildAppRouter({
   required WidgetBuilder homeBuilder,
   RecordingPageBuilder? recordingBuilder,
+  List<RouteBase> extraRoutes = const <RouteBase>[],
+  GoRouterRedirect? redirect,
+  Listenable? refreshListenable,
+  List<Widget> Function(BuildContext context)? shellActions,
 }) {
   return GoRouter(
     initialLocation: AppRoutes.home,
+    redirect: redirect,
+    refreshListenable: refreshListenable,
     routes: <RouteBase>[
       ShellRoute(
         builder:
-            (BuildContext context, GoRouterState state, Widget child) => AppShell(child: child),
+            (BuildContext context, GoRouterState state, Widget child) =>
+                AppShell(actions: shellActions?.call(context) ?? const <Widget>[], child: child),
         routes: <RouteBase>[
           GoRoute(
             path: AppRoutes.home,
@@ -35,6 +42,7 @@ GoRouter buildAppRouter({
                   (BuildContext context, GoRouterState state) =>
                       recordingBuilder(context, state.pathParameters['id'] ?? ''),
             ),
+          ...extraRoutes,
         ],
       ),
     ],
