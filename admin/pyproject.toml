@@ -1,0 +1,43 @@
+[project]
+name = "admin"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "boto3>=1.44.9",
+    "python-dotenv>=1.2.4",
+    "streamlit>=1.67.0",
+    "supabase>=2.34.1",
+]
+
+[dependency-groups]
+dev = [
+    "boto3-stubs[s3]>=1.44.9",
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+    "ruff>=0.17.6",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "SIM", "RET", "PTH", "S", "ANN", "RUF"]
+ignore = ["S101"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["ANN", "S105", "S106"]
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+packages = ["naney_admin"]
+
+[[tool.mypy.overrides]]
+module = ["streamlit.*", "supabase.*", "dotenv.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

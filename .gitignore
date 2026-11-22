@@ -1,0 +1,36 @@
+# --- Secrets: never in this repo (real ones live in ../naney-secrets/) ---
+*.env
+.env*
+.dev.vars*
+*.pem
+*.key
+**/secrets/
+naney-secrets/
+
+# --- Flutter / Dart ---
+app/.dart_tool/
+app/build/
+app/.flutter-plugins
+app/.flutter-plugins-dependencies
+*.iml
+.idea/
+
+# --- Worker / Node ---
+worker/node_modules/
+worker/.wrangler/
+worker/dist/
+
+# --- Admin / Python ---
+admin/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Supabase local ---
+supabase/.branches/
+supabase/.temp/
+
+# --- OS ---
+.DS_Store
