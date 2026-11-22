@@ -34,3 +34,8 @@ supabase/.temp/
 
 # --- OS ---
 .DS_Store
+
+# --- build_runner outputs (regenerated in CI) ---
+*.g.dart
+*.config.dart
+*.freezed.dart

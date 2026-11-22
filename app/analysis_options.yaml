@@ -32,7 +32,10 @@ linter:
     - prefer_final_locals
     - prefer_relative_imports
     - prefer_single_quotes
-    - require_trailing_commas
     - sort_constructors_first
     - unawaited_futures
     - unnecessary_await_in_return
+
+# Dart 3.7+ "tall" formatter owns trailing commas, so require_trailing_commas is not enabled.
+formatter:
+  page_width: 100
