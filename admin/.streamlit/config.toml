@@ -1,6 +1,9 @@
 [server]
+# Local only: this panel holds the Supabase secret key.
 address = "127.0.0.1"
 headless = true
+# Revision uploads can be videos up to 500 MB.
+maxUploadSize = 500
 
 [browser]
 gatherUsageStats = false

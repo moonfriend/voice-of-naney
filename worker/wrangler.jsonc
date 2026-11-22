@@ -8,8 +8,9 @@
     "directory": "../app/build/web",
     "binding": "ASSETS",
     "not_found_handling": "single-page-application",
-    "run_worker_first": ["/api/*", "/media/*"]
+    "run_worker_first": ["/api/*", "/media/*", "/photos/*"]
   },
   "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "naney-media" }],
+  "vars": { "MAX_UPLOADS_PER_DAY": "50", "ALLOWED_ORIGINS": "" },
   "observability": { "enabled": true }
 }
