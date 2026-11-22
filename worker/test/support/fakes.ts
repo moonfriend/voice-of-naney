@@ -98,6 +98,7 @@ export function makeDeps(
     profiles: new FakeProfiles(),
     signer: new FakeSigner(),
     bucket,
+    geoFetch: async () => new Response('geo not stubbed', { status: 500 }),
     allowedOrigins: ['http://localhost:8080'],
     maxUploadsPerDay: 3,
     now,

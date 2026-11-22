@@ -1,4 +1,5 @@
 import { withCors } from './cors';
+import { placeBoundary, searchPlaces } from './geo/geo';
 import { errorResponse, HttpError, json } from './http';
 import { mediaKeyFromPath, serveMedia } from './media';
 import type { Deps } from './ports';
@@ -37,6 +38,14 @@ async function route(request: Request, deps: Deps): Promise<Response> {
       throw new HttpError(404, 'not_found');
     }
     return serveMedia(request, deps.bucket, key);
+  }
+  if (pathname === '/api/geo/search') {
+    requireMethod(request, 'GET');
+    return searchPlaces(request, deps);
+  }
+  if (pathname === '/api/geo/boundary') {
+    requireMethod(request, 'GET');
+    return placeBoundary(request, deps);
   }
   if (pathname === '/api/uploads') {
     requireMethod(request, 'POST');
