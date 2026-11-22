@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+import hashlib
 import uuid
 from dataclasses import dataclass
+from pathlib import Path
 
 import boto3
 import streamlit as st
@@ -30,8 +32,20 @@ class Services:
     places: PlaceService
 
 
-@st.cache_resource
-def _build_services() -> Services:
+PACKAGE_DIR = Path(__file__).resolve().parent
+
+
+def code_fingerprint(root: Path) -> str:
+    """Hash of the package source, so cached services are rebuilt after code changes."""
+    digest = hashlib.sha256()
+    for path in sorted(root.rglob("*.py")):
+        digest.update(str(path.relative_to(root)).encode())
+        digest.update(path.read_bytes())
+    return digest.hexdigest()
+
+
+@st.cache_resource(max_entries=1)
+def _build_services(code_version: str) -> Services:
     config = load_config()
     repo = SupabaseRepository(create_client(config.supabase_url, config.supabase_secret_key))
     s3 = boto3.client(
@@ -57,7 +71,7 @@ def get_services() -> Services:
     if isinstance(injected, Services):
         return injected
     try:
-        return _build_services()
+        return _build_services(code_fingerprint(PACKAGE_DIR))
     except ConfigError as error:
         st.error(f"Admin panel is not configured: {error}")
         st.stop()
