@@ -16,13 +16,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "admin"))
 
-import boto3  # noqa: E402
-from dotenv import dotenv_values  # noqa: E402
+import boto3
+from dotenv import dotenv_values
+from naney_admin.config import default_secrets_path, load_config
 
-from naney_admin.config import default_secrets_path, load_config  # noqa: E402
 
-
-def call(method: str, url: str, *, headers: dict[str, str], body: bytes | None = None) -> tuple[int, bytes, dict[str, str]]:
+def call(
+    method: str, url: str, *, headers: dict[str, str], body: bytes | None = None
+) -> tuple[int, bytes, dict[str, str]]:
     # Cloudflare's bot filter rejects Python's default User-Agent (error 1010).
     headers = {"user-agent": "naney-smoke-test/1.0", **headers}
     request = urllib.request.Request(url, data=body, method=method, headers=headers)  # noqa: S310
@@ -43,7 +44,9 @@ def main() -> int:
     email = f"smoke-{secrets.token_hex(4)}@example.invalid"
     password = secrets.token_urlsafe(24)
     status, body, _ = call(
-        "POST", f"{config.supabase_url}/auth/v1/admin/users", headers=service,
+        "POST",
+        f"{config.supabase_url}/auth/v1/admin/users",
+        headers=service,
         body=json.dumps({"email": email, "password": password, "email_confirm": True}).encode(),
     )
     assert status == 200, f"create user failed: {status}"
@@ -52,7 +55,8 @@ def main() -> int:
     object_key = None
     try:
         status, body, _ = call(
-            "POST", f"{config.supabase_url}/auth/v1/token?grant_type=password",
+            "POST",
+            f"{config.supabase_url}/auth/v1/token?grant_type=password",
             headers={"apikey": publishable, "content-type": "application/json"},
             body=json.dumps({"email": email, "password": password}).encode(),
         )
@@ -63,8 +67,12 @@ def main() -> int:
         payload = b"naney smoke test " + secrets.token_bytes(16)
         auth = {"authorization": f"Bearer {token}", "content-type": "application/json"}
         status, body, _ = call(
-            "POST", f"{api}/api/uploads", headers=auth,
-            body=json.dumps({"purpose": "media", "mime": "audio/mpeg", "size": len(payload)}).encode(),
+            "POST",
+            f"{api}/api/uploads",
+            headers=auth,
+            body=json.dumps(
+                {"purpose": "media", "mime": "audio/mpeg", "size": len(payload)}
+            ).encode(),
         )
         assert status == 201, f"create upload failed: {status} {body[:200]!r}"
         ticket = json.loads(body)
@@ -75,15 +83,19 @@ def main() -> int:
         assert status == 200, f"PUT to R2 failed: {status}"
         print("4. bytes stored in R2 via presigned URL")
 
-        status, _, _ = call("PUT", ticket["url"], headers={"content-type": "text/html"}, body=payload)
+        status, _, _ = call(
+            "PUT", ticket["url"], headers={"content-type": "text/html"}, body=payload
+        )
         assert status == 403, f"R2 accepted a different content type: {status}"
         print("5. presigned URL refuses a different content type")
 
-        status, body, _ = call("POST", f"{api}/api/uploads/{ticket['uploadId']}/complete", headers=auth, body=b"{}")
+        status, body, _ = call(
+            "POST", f"{api}/api/uploads/{ticket['uploadId']}/complete", headers=auth, body=b"{}"
+        )
         assert status == 200 and json.loads(body)["verified"], f"complete failed: {status}"
         print("6. upload verified by the Worker")
 
-        status, body, headers = call("GET", f"{api}/{object_key}", headers={"range": "bytes=0-4"})
+        status, body, _ = call("GET", f"{api}/{object_key}", headers={"range": "bytes=0-4"})
         assert status == 206 and body == payload[:5], f"media range failed: {status}"
         print("7. media served back with byte ranges")
 
@@ -94,7 +106,8 @@ def main() -> int:
         print(f"8. place search works ({len(results)} results)")
         if with_area:
             status, body, _ = call(
-                "GET", f"{api}/api/geo/boundary?osm_type={with_area['osmType']}&osm_id={with_area['osmId']}",
+                "GET",
+                f"{api}/api/geo/boundary?osm_type={with_area['osmType']}&osm_id={with_area['osmId']}",
                 headers=auth,
             )
             assert status in (200, 404), f"boundary failed: {status}"
@@ -104,10 +117,15 @@ def main() -> int:
     finally:
         if object_key:
             boto3.client(
-                "s3", endpoint_url=config.r2_endpoint, region_name="auto",
-                aws_access_key_id=config.r2_access_key_id, aws_secret_access_key=config.r2_secret_access_key,
+                "s3",
+                endpoint_url=config.r2_endpoint,
+                region_name="auto",
+                aws_access_key_id=config.r2_access_key_id,
+                aws_secret_access_key=config.r2_secret_access_key,
             ).delete_object(Bucket=config.r2_bucket, Key=object_key)
-        status, _, _ = call("DELETE", f"{config.supabase_url}/auth/v1/admin/users/{user_id}", headers=service)
+        status, _, _ = call(
+            "DELETE", f"{config.supabase_url}/auth/v1/admin/users/{user_id}", headers=service
+        )
         print(f"cleanup: object removed, temporary user deleted ({status})")
 
 
